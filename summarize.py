@@ -159,7 +159,11 @@ def main(my_args: CommandlineArguments) -> None:
     my_prompt = PromptTemplate(
         template=PROMPT_TEMPLATE, input_variables=["text_to_summarize"]
     )
-    llm = TextGen(model_url=OOBA_NON_STREAMING_API_URL, preset="Divine Intellect")
+    llm = TextGen(
+        model_url=OOBA_NON_STREAMING_API_URL,
+        preset="Divine Intellect",
+        max_new_tokens=1024,
+    )
     llm_chain = LLMChain(prompt=my_prompt, llm=llm)
 
     # enter recursion
